@@ -1,4 +1,4 @@
-= form_for(current_user, html:{class: 'container user-new'}) do |f|
+= form_for(current_user, html:{ class: 'container user-new' }) do |f|
   .col-md-8.col-md-offset-2
     %header.row.user-nav.row
       .col-md-12
@@ -6,18 +6,18 @@
         .user-name_image.row
           .user-name.col-md-10
             = f.text_field :name, placeholder: "Username"
-        .user-image.col-md-2
-          %button.btn.btn-primary Change image
-          %input{type: "file"}/
+          .user-image.col-md-2
+            %button.btn.btn-primary change image
+            = f.file_field :avatar
         .user-email.col-md-10
         = f.email_field :email, placeholder: "E-Mail"
         .user-email.col-md-10
-        %input.user-password{type: "password", placeholder: "Password"}/
+        %input.user-password{ type: "password", placeholder: "Password" }
       .col-md-12
         %h4 Member of
         .user-user-member.row
           .user-name.col-md-12
-            = f.text_field :member, placeholder: "Member", type: "text"
+            = f.text_field :member, placeholder: "Member"
         %h4 Profile
         .user-user-profile.row
           .user-name.col-md-12
