@@ -7,9 +7,9 @@
     end
     def update
       current_user.update(user_params)
+      flash[:success] = "ユーザー情報を変更しました。"
       redirect_to :root and return
     end
-
    private
      def user_params
        params.require(:user)
