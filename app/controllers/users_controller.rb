@@ -1,4 +1,4 @@
-  class UsersController < ApplicationController
+ class UsersController < ApplicationController
     def show
       @user = User.find(params[:id])
     end
@@ -6,10 +6,15 @@
       @user = User.find(params[:id])
     end
     def update
-      current_user.update(user_params)
-      flash[:success] = "ユーザー情報を変更しました。"
-      redirect_to :root and return
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "ユーザー情報を更新しました"
+      redirect_to root_path
+    else
+      flash[:warning] = "入力に誤りがあります"
+      render :edit
     end
+   end
    private
      def user_params
        params.require(:user)
@@ -21,5 +26,3 @@
                      :avatar)
      end
   end
-
-
