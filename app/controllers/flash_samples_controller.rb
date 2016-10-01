@@ -5,7 +5,7 @@ class Flash_samples_Controller < ApplicationController
      redirect_to books_url, success: "Successfully created your prototype."
     else
       flash[:warning] = "Unfortunately failed to create."
-      render action: 'root_url'
+      render action: 'path'
     end
   end
 end
