@@ -6,7 +6,11 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    = render partial: "layouts/header"
+    %body
+    - flash.each do |key, value|
+      - key = "info" if key == "notice"
+      - key = "danger"  if key == "alert"
+      = content_tag :div, value, class: "alert alert-#{key}"
+    = render "layouts/header"
     = yield
-    = render paryial: "layouts/footer"
+    = render "layouts/footer"
