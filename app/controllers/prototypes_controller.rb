@@ -11,7 +11,7 @@ class PrototypesController < ApplicationController
     end
 
     def create
-      @prototype = Prototype.create(create_params)
+      @prototype = current_user.prototypes.create(create_params)
        if @prototype.errors.present?
         flash[:error] = @prototype.errors.full_messages
         redirect_to prototypes_path
@@ -22,6 +22,6 @@ class PrototypesController < ApplicationController
 
   private
    def create_params
-    params.require(:prototype).permit(:title, :catchcopy, :concept, capturedimages_attributes: [:prototype_id, :image, :role]).merge(user_id: current_user.id)
+    params.require(:prototype).permit(:title, :catchcopy, :concept, capturedimages_attributes: [:prototype_id, :image, :role])
     end
   end
